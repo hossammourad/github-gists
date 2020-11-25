@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 
-import { UserSearchInput } from "../../components/UserSearchInput";
-import { GistViewer } from "../../components/GistViewer";
+import { UserSearchInput, GistViewer } from "../../components";
 import { Gist } from "../../types";
 
 const App: FC = () => {
@@ -10,6 +9,7 @@ const App: FC = () => {
   const [error, updateError] = useState("");
 
   const fetchGists = async (username: string) => {
+    updateError("");
     updateIsLoading(true);
     const result = await fetch(`https://api.github.com/users/${username}/gists`);
     if (result.status === 200) {
