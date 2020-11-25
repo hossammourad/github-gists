@@ -14,9 +14,11 @@ const App: FC = () => {
     const result = await fetch(`https://api.github.com/users/${username}/gists`);
     if (result.status === 200) {
       updateGists(await result.json());
+    } else if (result.status === 404) {
+      updateError("Username is not found. Try another one.");
     } else {
       updateError(
-        "A problem has occurred while fetching data. Please try again later. Check the browser console for the error message."
+        "A technical problem has occurred while fetching data. Please try again later. Check the browser console for the error message."
       );
     }
     updateIsLoading(false);
