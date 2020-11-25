@@ -10,3 +10,11 @@ export interface Gist {
   description: string;
   files: { GistFiles };
 }
+
+export interface GistFork {
+  id: string;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+}

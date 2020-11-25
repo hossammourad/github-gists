@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 
 import { UserSearchInput } from "../../components/UserSearchInput";
+import { GistViewer } from "../../components/GistViewer";
 import { Gist } from "../../types";
-import { GistsList } from "../GistsList";
 
 const App: FC = () => {
   const [gists, updateGists] = useState<Gist[]>([]);
@@ -26,7 +26,7 @@ const App: FC = () => {
     if (isLoading) return "Loading...";
     if (error) return error;
     if (gists.length === 0) return "No gists found. Try searching by a username.";
-    return <GistsList gists={gists} />;
+    return gists.map((gist) => <GistViewer key={gist.id} gist={gist} />);
   };
 
   return (
