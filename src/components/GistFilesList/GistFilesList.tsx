@@ -28,10 +28,14 @@ const GistFilesList: FC<Props> = ({ files }) => {
         return (
           <div key={single} css={styles.singleFile}>
             <FaFile css={styles.fileIcon} />
-            <code css={styles.fileName} onClick={() => setFileInModal(files[single].raw_url)}>
+            <code
+              css={styles.fileName}
+              onClick={() => setFileInModal(files[single].raw_url)}
+              data-testid="filename-element"
+            >
               {single}
             </code>
-            <span css={styles.fileBadge(files[single].language)}>
+            <span css={styles.fileBadge(files[single].language)} data-testid="filename-language">
               {files[single].language || "Plain Text"}
             </span>
           </div>

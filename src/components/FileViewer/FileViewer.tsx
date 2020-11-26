@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, Fragment, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 
 import * as styles from "./FileViewer.styles";
@@ -45,13 +45,13 @@ const FileViewer: FC<Props> = ({ fileURL, close }) => {
   };
 
   return (
-    <Fragment>
+    <div data-testid="file-viewer">
       <div css={styles.overlay} onClick={close} />
       <div css={styles.modalWrapper}>
         <FaTimesCircle size="24" css={styles.closeButton} onClick={close} />
         {renderContent()}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
