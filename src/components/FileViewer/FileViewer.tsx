@@ -19,23 +19,29 @@ const FileViewer: FC<Props> = ({ fileURL, close }) => {
   }, [fileURL]);
 
   const fetchFileContent = async (link: string) => {
-    updateIsLoading(true);
-    const result = await fetch(link);
-    if (result.status === 200) {
-      updateData(await (await result.blob()).text());
-    } else if (result.status === 404) {
-      updateError("File not found.");
-    } else {
-      updateError("Error occurred. Try again later.");
+    if (link) {
+      updateIsLoading(true);
+      const result = await fetch(link);
+      if (result.status === 200) {
+        updateData(await (await result.blob()).text());
+      } else if (result.status === 404) {
+        updateError("File not found.");
+      } else {
+        updateError("Error occurred. Try again later.");
+      }
+      updateIsLoading(false);
     }
-    updateIsLoading(false);
   };
 
   const renderContent = () => {
-    if (isLoading) return <span>Loading...</span>;
-    if (error) return <span>{error}</span>;
-    if (!fileURL) return <span>No file was provided.</span>;
-    return <code css={styles.fileContent}>{data}</code>;
+    if (isLoading) return <span data-testid="loading-message">Loading...</span>;
+    if (error) return <span data-testid="error-message">{error}</span>;
+    if (!fileURL) return <span data-testid="no-file-warning">No file was provided.</span>;
+    return (
+      <code css={styles.fileContent} data-testid="file-content-code">
+        {data}
+      </code>
+    );
   };
 
   return (
