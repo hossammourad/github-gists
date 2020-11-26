@@ -7,10 +7,14 @@ const App: FC = () => {
   const [gists, updateGists] = useState<Gist[]>([]);
   const [isLoading, updateIsLoading] = useState(false);
   const [error, updateError] = useState("");
+  const [currentSearchedUser, updateCurrentSearchedUser] = useState("");
 
   const fetchGists = async (username: string) => {
+    if (currentSearchedUser === username) return;
+
     updateError("");
     updateIsLoading(true);
+
     const result = await fetch(`https://api.github.com/users/${username}/gists`);
     if (result.status === 200) {
       updateGists(await result.json());
@@ -21,6 +25,8 @@ const App: FC = () => {
         "A technical problem has occurred while fetching data. Please try again later. Check the browser console for the error message."
       );
     }
+
+    updateCurrentSearchedUser(username);
     updateIsLoading(false);
   };
 
