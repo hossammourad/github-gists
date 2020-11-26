@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useState } from "react";
-import { FaFile, FaLink } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
 import { GistForksList } from "../GistForksList";
-import { Gist, GistFiles } from "../../types";
+import { GistFilesList } from "../GistFilesList";
+import { Gist } from "../../types";
 import * as styles from "./GistViewer.styles";
 import { sharedStyles } from "../../styling";
 
@@ -13,20 +14,6 @@ interface Props {
 
 const GistViewer: FC<Props> = ({ gist }) => {
   const [isForksVisible, updateIsForksVisible] = useState(false);
-
-  const renderFiles = (files: GistFiles) => {
-    return Object.keys(files).map((single) => {
-      return (
-        <div key={single} css={styles.singleFile}>
-          <FaFile css={styles.fileIcon} />
-          <code css={styles.fileName}>{single}</code>
-          <span css={styles.fileBadge(files[single].language)}>
-            {files[single].language || "Plain Text"}
-          </span>
-        </div>
-      );
-    });
-  };
 
   const renderForks = () => {
     if (!isForksVisible) return null;
@@ -54,7 +41,7 @@ const GistViewer: FC<Props> = ({ gist }) => {
 
       <div css={styles.filesSection}>
         <h4 css={styles.filesLabel}>Files</h4>
-        {renderFiles(gist.files)}
+        <GistFilesList files={gist.files} />
       </div>
 
       {renderForks()}
