@@ -8,6 +8,7 @@ export interface GistFiles {
 export interface Gist {
   id: string;
   description: string;
+  html_url: string;
   files: { GistFiles };
 }
 

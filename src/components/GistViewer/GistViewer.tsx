@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useState } from "react";
-import { FaFile } from "react-icons/fa";
+import { FaFile, FaLink } from "react-icons/fa";
 
 import { GistForksList } from "../GistForksList";
 import { Gist, GistFiles } from "../../types";
@@ -37,19 +37,26 @@ const GistViewer: FC<Props> = ({ gist }) => {
 
   return (
     <div key={gist.id} css={styles.section}>
-      <h3 css={styles.description}>
-        {gist.description || "No description found"}
-        <button
-          onClick={() => updateIsForksVisible(!isForksVisible)}
-          css={[sharedStyles.button.base, sharedStyles.button.small, styles.forksButton]}
-        >
-          {forksButtonText}
-        </button>
+      <h3 css={styles.header}>
+        <span css={styles.descriptionText}>{gist.description || "Untitled gist"}</span>
+        <div css={styles.forkOptions}>
+          <button
+            onClick={() => updateIsForksVisible(!isForksVisible)}
+            css={[sharedStyles.button.base, sharedStyles.button.small, styles.forksButton]}
+          >
+            {forksButtonText}
+          </button>
+          <a href={gist.html_url} target="_blank" rel="noreferrer" css={styles.gistLink}>
+            <FaLink />
+          </a>
+        </div>
       </h3>
+
       <div css={styles.filesSection}>
         <h4 css={styles.filesLabel}>Files</h4>
         {renderFiles(gist.files)}
       </div>
+
       {renderForks()}
     </div>
   );

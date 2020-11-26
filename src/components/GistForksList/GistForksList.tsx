@@ -62,7 +62,7 @@ const GistForksList: FC<Props> = ({ gistID }) => {
     );
   };
 
-  return <Fragment>{renderForks()}</Fragment>;
+  return <div css={styles.forksSection}>{renderForks()}</div>;
 };
 
 export { GistForksList };

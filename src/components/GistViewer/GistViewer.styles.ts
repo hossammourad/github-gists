@@ -14,10 +14,29 @@ export const section = css`
   }
 `;
 
-export const description = css`
-  padding-bottom: ${units.half};
-  margin-bottom: ${units.half};
+export const header = css`
+  display: flex;
+  align-items: center;
+  padding-bottom: ${units.one};
+  margin-bottom: ${units.one};
   border-bottom: 1px dotted ${colors.lightGray};
+`;
+
+export const descriptionText = css`
+  max-width: 80%;
+`;
+
+export const forkOptions = css`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+`;
+
+export const gistLink = css`
+  color: ${colors.green};
+  margin-left: ${units.half};
+  padding-left: ${units.half};
+  border-left: 1px dashed ${colors.gray};
 `;
 
 export const forksButton = css`
@@ -25,7 +44,7 @@ export const forksButton = css`
 `;
 
 export const filesSection = css`
-  margin: ${units.one} 0;
+  margin-top: ${units.one};
 `;
 
 export const filesLabel = css`

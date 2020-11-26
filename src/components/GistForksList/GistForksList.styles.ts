@@ -2,12 +2,17 @@ import { css } from "@emotion/react";
 
 import { colors, typography, units } from "../../styling";
 
+export const forksSection = css`
+  margin-top: 1rem;
+`;
+
 export const forksList = css`
   display: flex;
   align-items: center;
 `;
 
 export const forksLabel = css`
+  margin-top: ${units.oneHalf};
   margin-bottom: ${units.half};
 `;
 
