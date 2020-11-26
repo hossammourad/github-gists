@@ -32,6 +32,10 @@ export const singleFile = css`
   display: flex;
   align-items: center;
   margin-bottom: ${units.half};
+
+  &::last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 export const fileIcon = css`
@@ -49,7 +53,7 @@ export const fileBadge = (language: string) => {
     font-size: ${typography.smallText};
     background-color: ${colors.languages[language] || colors.languages.other};
     color: ${colors.white};
-    padding: ${units.quarter};
+    padding: 0 ${units.quarter};
     border-radius: ${units.quarter};
   `;
 };
