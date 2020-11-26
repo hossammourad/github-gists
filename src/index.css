@@ -4,7 +4,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   padding: 4rem;
-  max-width: 1200px;
+  max-width: 800px;
+  min-width: 50%;
   margin: auto;
 }
 
