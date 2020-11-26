@@ -1,6 +1,9 @@
+/** @jsxImportSource @emotion/react */
 import { FC, FormEvent, useState } from "react";
 
 import { isUsernameValid } from "../../utils";
+import * as styles from "./UserSearchInput.styles";
+import { sharedStyles } from "../../styling";
 
 interface Props {
   fetchGists: (username: string) => void;
@@ -19,17 +22,19 @@ const UserSearchInput: FC<Props> = ({ fetchGists }) => {
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          autoFocus
-          required
-          onChange={(e) => updateUsername(e.target.value)}
-        />
-      </form>
-    </>
+    <form onSubmit={onSubmit} css={styles.form}>
+      <input
+        type="text"
+        placeholder="Username"
+        autoFocus
+        required
+        onChange={(e) => updateUsername(e.target.value)}
+        css={[sharedStyles.input, styles.input]}
+      />
+      <button type="submit" css={sharedStyles.button}>
+        Get Gists
+      </button>
+    </form>
   );
 };
 
