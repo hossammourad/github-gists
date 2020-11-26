@@ -25,7 +25,7 @@ const App: FC = () => {
   };
 
   const renderGists = () => {
-    if (isLoading) return <span>"Loading..."</span>;
+    if (isLoading) return <span>Loading...</span>;
     if (error) return <span>{error}</span>;
     if (gists.length === 0)
       return (

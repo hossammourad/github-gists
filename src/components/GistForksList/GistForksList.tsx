@@ -33,9 +33,14 @@ const GistForksList: FC<Props> = ({ gistID }) => {
   };
 
   const renderForks = () => {
-    if (isLoading) return "Loading...";
-    if (error) return error;
-    if (forks.length === 0) return <span css={styles.noForks}>This gist has no forks.</span>;
+    if (isLoading) return <span data-testid="loading-section">Loading...</span>;
+    if (error) return <span data-testid="error-section">{error}</span>;
+    if (forks.length === 0)
+      return (
+        <span css={styles.noForks} data-testid="no-forks-section">
+          This gist has no forks.
+        </span>
+      );
 
     return (
       <Fragment>
@@ -54,8 +59,9 @@ const GistForksList: FC<Props> = ({ gistID }) => {
                   src={fork.owner.avatar_url}
                   alt={`${fork.owner} avatar`}
                   css={styles.userAvatar}
+                  data-testid="fork-owner-avatar"
                 />
-                <span>{fork.owner.login}</span>
+                <span data-testid="fork-owner-username">{fork.owner.login}</span>
               </a>
             );
           })}
