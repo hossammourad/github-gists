@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC, FormEvent, useState } from "react";
+import { FaGithub } from "react-icons/fa";
 
 import { isUsernameValid } from "../../utils";
 import * as styles from "./UserSearchInput.styles";
@@ -22,19 +23,26 @@ const UserSearchInput: FC<Props> = ({ fetchGists }) => {
   };
 
   return (
-    <form onSubmit={onSubmit} css={styles.form}>
-      <input
-        type="text"
-        placeholder="Username"
-        autoFocus
-        required
-        onChange={(e) => updateUsername(e.target.value)}
-        css={[sharedStyles.input, styles.input]}
-      />
-      <button type="submit" css={[sharedStyles.button.base]}>
-        Get Gists
-      </button>
-    </form>
+    <header css={styles.wrapper}>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Username"
+          autoFocus
+          required
+          onChange={(e) => updateUsername(e.target.value)}
+          css={[sharedStyles.input, styles.input]}
+        />
+        <button type="submit" css={[sharedStyles.button.base]}>
+          Get Gists
+        </button>
+      </form>
+
+      <h1 css={styles.title}>
+        <FaGithub css={styles.githubIcon} />
+        GitHub Gists
+      </h1>
+    </header>
   );
 };
 
