@@ -10,7 +10,7 @@ export interface Gist {
   id: string;
   description: string;
   html_url: string;
-  files: { GistFiles };
+  files: GistFiles;
 }
 
 export interface GistFork {

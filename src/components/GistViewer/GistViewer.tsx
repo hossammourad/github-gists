@@ -17,7 +17,11 @@ const GistViewer: FC<Props> = ({ gist }) => {
 
   const renderForks = () => {
     if (!isForksVisible) return null;
-    return <GistForksList key={gist.id} gistID={gist.id} />;
+    return (
+      <div data-testid="gist-forks-list">
+        <GistForksList key={gist.id} gistID={gist.id} />
+      </div>
+    );
   };
 
   const forksButtonText = isForksVisible ? "Close Forks" : "Open Forks";
@@ -25,21 +29,30 @@ const GistViewer: FC<Props> = ({ gist }) => {
   return (
     <div key={gist.id} css={styles.section}>
       <h3 css={styles.header}>
-        <span css={styles.descriptionText}>{gist.description || "Untitled gist"}</span>
+        <span css={styles.descriptionText} data-testid="gist-description">
+          {gist.description || "Untitled gist"}
+        </span>
         <div css={styles.forkOptions}>
           <button
             onClick={() => updateIsForksVisible(!isForksVisible)}
             css={[sharedStyles.button.base, sharedStyles.button.small, styles.forksButton]}
+            data-testid="gist-forks-button"
           >
             {forksButtonText}
           </button>
-          <a href={gist.html_url} target="_blank" rel="noreferrer" css={styles.gistLink}>
+          <a
+            href={gist.html_url}
+            target="_blank"
+            rel="noreferrer"
+            css={styles.gistLink}
+            data-testid="gist-link"
+          >
             <FaLink />
           </a>
         </div>
       </h3>
 
-      <div css={styles.filesSection}>
+      <div css={styles.filesSection} data-testid="gist-files-list">
         <h4 css={styles.filesLabel}>Files</h4>
         <GistFilesList files={gist.files} />
       </div>
