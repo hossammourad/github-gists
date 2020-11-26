@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useState } from "react";
 import { FaLink } from "react-icons/fa";
+import ReactTooltip from "react-tooltip";
 
 import { GistForksList } from "../GistForksList";
 import { GistFilesList } from "../GistFilesList";
@@ -45,6 +46,7 @@ const GistViewer: FC<Props> = ({ gist }) => {
             target="_blank"
             rel="noreferrer"
             css={styles.gistLink}
+            data-tip="Click to open the gist in GitHub"
             data-testid="gist-link"
           >
             <FaLink />
@@ -58,6 +60,8 @@ const GistViewer: FC<Props> = ({ gist }) => {
       </div>
 
       {renderForks()}
+
+      <ReactTooltip />
     </div>
   );
 };

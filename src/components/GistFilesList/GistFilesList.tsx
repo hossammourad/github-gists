@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC, Fragment, useState } from "react";
 import { FaFile } from "react-icons/fa";
+import ReactTooltip from "react-tooltip";
 
 import { FileViewer } from "../FileViewer";
 import { GistFiles } from "../../types";
@@ -31,6 +32,7 @@ const GistFilesList: FC<Props> = ({ files }) => {
             <code
               css={styles.fileName}
               onClick={() => setFileInModal(files[single].raw_url)}
+              data-tip="Click to see the file content"
               data-testid="filename-element"
             >
               {single}
@@ -43,6 +45,8 @@ const GistFilesList: FC<Props> = ({ files }) => {
       })}
 
       {renderFileModal()}
+
+      <ReactTooltip />
     </Fragment>
   );
 };
