@@ -30,6 +30,13 @@ const App: FC = () => {
     updateIsLoading(false);
   };
 
+  const reset = () => {
+    updateGists([]);
+    updateCurrentSearchedUser("");
+    updateError("");
+    updateIsLoading(false);
+  };
+
   const renderGists = () => {
     if (isLoading) return <span>Loading...</span>;
     if (error) return <span>{error}</span>;
@@ -42,7 +49,7 @@ const App: FC = () => {
 
   return (
     <>
-      <UserSearchInput fetchGists={fetchGists} />
+      <UserSearchInput fetchGists={fetchGists} reset={reset} />
       {renderGists()}
     </>
   );

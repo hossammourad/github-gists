@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState, useRef } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import { isUsernameValid } from "../../utils";
@@ -8,10 +8,12 @@ import { sharedStyles } from "../../styling";
 
 interface Props {
   fetchGists: (username: string) => void;
+  reset: () => void;
 }
 
-const UserSearchInput: FC<Props> = ({ fetchGists }) => {
+const UserSearchInput: FC<Props> = ({ fetchGists, reset }) => {
   const [username, updateUsername] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -22,6 +24,12 @@ const UserSearchInput: FC<Props> = ({ fetchGists }) => {
     }
   };
 
+  const resetOnClick = () => {
+    updateUsername("");
+    reset();
+    inputRef?.current?.focus();
+  };
+
   return (
     <header css={styles.wrapper}>
       <form onSubmit={onSubmit}>
@@ -30,11 +38,22 @@ const UserSearchInput: FC<Props> = ({ fetchGists }) => {
           placeholder="Username"
           autoFocus
           required
+          value={username}
+          ref={inputRef}
           onChange={(e) => updateUsername(e.target.value)}
           css={[sharedStyles.input, styles.input]}
         />
+
         <button type="submit" css={[sharedStyles.button.base]}>
           Get Gists
+        </button>
+
+        <button
+          type="button"
+          css={[sharedStyles.button.base, sharedStyles.button.danger, styles.resetButton]}
+          onClick={resetOnClick}
+        >
+          Reset
         </button>
       </form>
 

@@ -34,5 +34,14 @@ export const button = {
   small: css`
     font-size: ${typography.smallText};
     padding: ${units.quarter} ${units.half};
+  `,
+
+  danger: css`
+    background-color: ${colors.red};
+    border-color: ${colors.darkRed};
+
+    &:hover {
+      background-color: ${colors.darkRed};
+    }
   `
 };

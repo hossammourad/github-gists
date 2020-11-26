@@ -23,3 +23,7 @@ export const githubIcon = css`
 export const input = css`
   margin-right: ${units.one};
 `;
+
+export const resetButton = css`
+  margin-left: ${units.one};
+`;

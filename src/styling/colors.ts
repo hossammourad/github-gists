@@ -8,6 +8,9 @@ export const darkGray = "#333";
 export const green = "#2EA44F";
 export const darkGreen = "#2C974B";
 
+export const red = "#CB444A";
+export const darkRed = "#a43237";
+
 export const yellow = "#FFC107";
 
 export const languages: { [key: string]: string } = {
