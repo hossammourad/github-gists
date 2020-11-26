@@ -2,6 +2,7 @@ export interface GistFiles {
   [key: string]: {
     filename: string;
     language: string;
+    raw_url: string;
   };
 }
 

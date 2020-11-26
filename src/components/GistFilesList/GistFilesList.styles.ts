@@ -20,6 +20,11 @@ export const fileIcon = css`
 export const fileName = css`
   font-size: ${typography.smallText};
   margin-right: ${units.half};
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const fileBadge = (language: string) => {

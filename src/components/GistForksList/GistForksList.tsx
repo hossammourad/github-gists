@@ -22,6 +22,8 @@ const GistForksList: FC<Props> = ({ gistID }) => {
     const result = await fetch(`https://api.github.com/gists/${gistID}/forks?per_page=3`);
     if (result.status === 200) {
       updateForks(await result.json());
+    } else if (result.status === 404) {
+      updateError("Gist not found");
     } else {
       updateError(
         "A problem has occurred while fetching data. Please try again later. Check the browser console for the error message."
@@ -31,7 +33,7 @@ const GistForksList: FC<Props> = ({ gistID }) => {
   };
 
   const renderForks = () => {
-    if (isLoading) return "loading...";
+    if (isLoading) return "Loading...";
     if (error) return error;
     if (forks.length === 0) return <span css={styles.noForks}>This gist has no forks.</span>;
 
