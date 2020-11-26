@@ -25,9 +25,12 @@ const App: FC = () => {
   };
 
   const renderGists = () => {
-    if (isLoading) return "Loading...";
-    if (error) return error;
-    if (gists.length === 0) return "No gists found. Try searching by a username.";
+    if (isLoading) return <span>"Loading..."</span>;
+    if (error) return <span>{error}</span>;
+    if (gists.length === 0)
+      return (
+        <span data-testid="no-gists-warning">No gists found. Try searching by a username.</span>
+      );
     return gists.map((gist) => <GistViewer key={gist.id} gist={gist} />);
   };
 
