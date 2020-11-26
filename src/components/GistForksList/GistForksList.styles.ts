@@ -36,9 +36,11 @@ export const userAvatar = css`
 `;
 
 export const noForks = css`
+  display: inline-block;
   background-color: ${colors.yellow};
   color: ${colors.darkGray};
   font-size: ${typography.smallText};
   padding: ${units.half};
   border-radius: ${units.quarter};
+  margin-top: ${units.half};
 `;

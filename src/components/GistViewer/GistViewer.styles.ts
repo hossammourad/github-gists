@@ -14,10 +14,6 @@ export const section = css`
   }
 `;
 
-export const filesSection = css`
-  margin: ${units.one} 0;
-`;
-
 export const description = css`
   padding-bottom: ${units.half};
   margin-bottom: ${units.half};
@@ -26,6 +22,14 @@ export const description = css`
 
 export const forksButton = css`
   margin-left: ${units.half};
+`;
+
+export const filesSection = css`
+  margin: ${units.one} 0;
+`;
+
+export const filesLabel = css`
+  margin-bottom: ${units.half};
 `;
 
 export const singleFile = css`

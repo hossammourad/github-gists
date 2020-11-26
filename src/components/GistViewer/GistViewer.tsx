@@ -46,7 +46,10 @@ const GistViewer: FC<Props> = ({ gist }) => {
           {forksButtonText}
         </button>
       </h3>
-      <div css={styles.filesSection}>{renderFiles(gist.files)}</div>
+      <div css={styles.filesSection}>
+        <h4 css={styles.filesLabel}>Files</h4>
+        {renderFiles(gist.files)}
+      </div>
       {renderForks()}
     </div>
   );
