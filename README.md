@@ -21,6 +21,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Further improvements:
 
-- Write more tests
+- Write more tests for the `App` and `UserSearchInput` components
 - Add a better abstract way to render loading/error messages
 - Cache requests that have been already triggered
