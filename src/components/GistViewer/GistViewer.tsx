@@ -1,7 +1,11 @@
-import { FC, Fragment, useState } from "react";
+/** @jsxImportSource @emotion/react */
+import { FC, useState } from "react";
+import { FaFile } from "react-icons/fa";
 
 import { GistForksList } from "../GistForksList";
 import { Gist, GistFiles } from "../../types";
+import * as styles from "./GistViewer.styles";
+import { sharedStyles } from "../../styling";
 
 interface Props {
   gist: Gist;
@@ -13,8 +17,12 @@ const GistViewer: FC<Props> = ({ gist }) => {
   const renderFiles = (files: GistFiles) => {
     return Object.keys(files).map((single) => {
       return (
-        <div key={single}>
-          <span>{single}</span> – <span>{files[single].language || "Plain Text"}</span>
+        <div key={single} css={styles.singleFile}>
+          <FaFile css={styles.fileIcon} />
+          <code css={styles.fileName}>{single}</code>
+          <span css={styles.fileBadge(files[single].language)}>
+            {files[single].language || "Plain Text"}
+          </span>
         </div>
       );
     });
@@ -28,13 +36,19 @@ const GistViewer: FC<Props> = ({ gist }) => {
   const forksButtonText = isForksVisible ? "Close Forks" : "Open Forks";
 
   return (
-    <Fragment key={gist.id}>
-      <h3>{gist.description || "No description found"}</h3>
-      {renderFiles(gist.files)}
-      <button onClick={() => updateIsForksVisible(!isForksVisible)}>{forksButtonText}</button>
+    <div key={gist.id} css={styles.section}>
+      <h3 css={styles.description}>
+        {gist.description || "No description found"}
+        <button
+          onClick={() => updateIsForksVisible(!isForksVisible)}
+          css={[sharedStyles.button.base, sharedStyles.button.small, styles.forksButton]}
+        >
+          {forksButtonText}
+        </button>
+      </h3>
+      <div css={styles.filesSection}>{renderFiles(gist.files)}</div>
       {renderForks()}
-      <hr />
-    </Fragment>
+    </div>
   );
 };
 

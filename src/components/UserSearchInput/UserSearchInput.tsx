@@ -31,7 +31,7 @@ const UserSearchInput: FC<Props> = ({ fetchGists }) => {
         onChange={(e) => updateUsername(e.target.value)}
         css={[sharedStyles.input, styles.input]}
       />
-      <button type="submit" css={sharedStyles.button}>
+      <button type="submit" css={[sharedStyles.button.base]}>
         Get Gists
       </button>
     </form>
