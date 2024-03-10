@@ -8,7 +8,7 @@ interface Props {
   gistID: string;
 }
 
-const GistForksList: FC<Props> = ({ gistID }) => {
+export const GistForksList: FC<Props> = ({ gistID }) => {
   const [isLoading, updateIsLoading] = useState(false);
   const [forks, updateForks] = useState<GistFork[]>([]);
   const [error, updateError] = useState("");
@@ -72,5 +72,3 @@ const GistForksList: FC<Props> = ({ gistID }) => {
 
   return <div css={styles.forksSection}>{renderForks()}</div>;
 };
-
-export { GistForksList };

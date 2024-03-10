@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 
-import { UserSearchInput, GistViewer } from "../../components";
+import { UserSearchInput } from '../UserSearchInput';
+import { GistViewer } from "../GistViewer";
 import { Gist } from "../../types";
 
-const App: FC = () => {
+export const App: FC = () => {
   const [gists, updateGists] = useState<Gist[]>([]);
   const [isLoading, updateIsLoading] = useState(false);
   const [error, updateError] = useState("");
@@ -54,5 +55,3 @@ const App: FC = () => {
     </>
   );
 };
-
-export { App };

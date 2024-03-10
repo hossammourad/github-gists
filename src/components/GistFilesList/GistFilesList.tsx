@@ -11,7 +11,7 @@ interface Props {
   files: GistFiles;
 }
 
-const GistFilesList: FC<Props> = ({ files }) => {
+export const GistFilesList: FC<Props> = ({ files }) => {
   const [fileInModal, setFileInModal] = useState("");
 
   const renderFileModal = () => {
@@ -50,5 +50,3 @@ const GistFilesList: FC<Props> = ({ files }) => {
     </Fragment>
   );
 };
-
-export { GistFilesList };

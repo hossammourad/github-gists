@@ -11,7 +11,7 @@ interface Props {
   reset: () => void;
 }
 
-const UserSearchInput: FC<Props> = ({ fetchGists, reset }) => {
+export const UserSearchInput: FC<Props> = ({ fetchGists, reset }) => {
   const [username, updateUsername] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -64,5 +64,3 @@ const UserSearchInput: FC<Props> = ({ fetchGists, reset }) => {
     </header>
   );
 };
-
-export { UserSearchInput };

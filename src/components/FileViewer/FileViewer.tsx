@@ -9,7 +9,7 @@ interface Props {
   close: () => void;
 }
 
-const FileViewer: FC<Props> = ({ fileURL, close }) => {
+export const FileViewer: FC<Props> = ({ fileURL, close }) => {
   const [isLoading, updateIsLoading] = useState(false);
   const [error, updateError] = useState("");
   const [data, updateData] = useState("");
@@ -54,5 +54,3 @@ const FileViewer: FC<Props> = ({ fileURL, close }) => {
     </div>
   );
 };
-
-export { FileViewer };

@@ -13,7 +13,7 @@ interface Props {
   gist: Gist;
 }
 
-const GistViewer: FC<Props> = ({ gist }) => {
+export const GistViewer: FC<Props> = ({ gist }) => {
   const [isForksVisible, updateIsForksVisible] = useState(false);
 
   const renderForks = () => {
@@ -65,5 +65,3 @@ const GistViewer: FC<Props> = ({ gist }) => {
     </div>
   );
 };
-
-export { GistViewer };
